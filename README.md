@@ -1,9 +1,9 @@
 # HeliosBlog
-Bundle de blog modulable pour Symfony2.
+Bundle de blog pour Symfony2. Ce bundle offre un blog au design minimaliste, mais entièrement modulable et personnalisable.
 ### [Par Nicolas GAUTHIER]
 
 # Options
-Ce bundle offre un blog au design minimaliste, mais entièrement modulable et personnalisable. Voici les principales fonctionnalités de base :
+Voici les principales fonctionnalités de base :
 - User bundle pour gérer l'espace membre
 - Ajout, modification et suppression d'articles pour les utilisateurs authentifiés en tant admin
 - Gestion des commentaires pour chaque article
