@@ -24,14 +24,11 @@ Vous avez deux solutions pour le faire :
 Avec Composer :
     php composer.phar install
 
-Pour les mettre à jour utilisez la commande suivante:
+Pour les mettre à jour utilisez la commande suivante :
     php composer.phar update
 
 Personnellement, j'utilise l'excellent IDE PHPStorm
 
-# Conseils pratiques
-## Changer le design
-Changez
 
 
-## Pour d'éventuelles idées ou propositions d'amélioration, merci de me contacter: nicolas.gauthier5@free.fr
+Pour d'éventuelles idées ou propositions d'amélioration, merci de me contacter: nicolas.gauthier5@free.fr
