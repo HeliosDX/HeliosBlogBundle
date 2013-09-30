@@ -13,12 +13,14 @@ Ce bundle offre un blog au design minimaliste, mais entièrement modulable et pe
 
 # Installation
 ## 1. Récupérer le code
-Vous avez deux solutions pour le faire :
+Pour ça, il y a deux solutions :
 
 1. Via Git, en clonant ce dépôt ;
-2. Via le téléchargement du code source en une archive ZIP, à cette adresse : https://github.com/heliosdx/HeliosBlog/archive/blog.zip
+2. Via le téléchargement du code source en archive ZIP, à cette adresse : https://github.com/HeliosDX/HeliosBlogBundle/archive/master.zip
 
-## 2. Définir vos paramètres d'application avec parametres.yml
+## 2. Définir vos paramètres
+
+Avec le fichier parametres.yml
 
 ## 3. Télécharger et mettre à jour les vendors
 Avec Composer :
@@ -27,7 +29,6 @@ Avec Composer :
 Pour les mettre à jour utilisez la commande suivante :
     php composer.phar update
 
-Personnellement, j'utilise l'excellent IDE PHPStorm
 
 
 
