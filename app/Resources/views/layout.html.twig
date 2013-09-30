@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <meta name="author" content="Nicolas GAUTHIER">
+    <meta name="keywords" content="Symfony2, Symfony, Symfony2.1, Symfony2.2, tutoriel, tutorial, blog, checklist, livre, cours">
+    <link rel="alternate" type="application/rss+xml" title="Un blog goutû sur Symfony2" href="{{ url('heliosblog_feed') }}">
+
+    <title>{% block title %}Helios Blog{% endblock %}</title>
+
+    {% block stylesheets %}
+      {% stylesheets output='css/main.css' filter='cssrewrite, ?yui_css'
+        'css/bootstrap.css'
+        '@HeliosBlogBundle/Resources/public/css/main.css' %}
+        <link rel="stylesheet" href="{{ asset_url }}" type="text/css" />
+      {% endstylesheets %}
+    {% endblock %}
+  </head>
+
+  <body>
+    <div class="container">
+      <div id="header" class="hero-unit">
+        <p>Votre bannière ici.</p>
+      </div>
+
+      <div class="row">
+        <div id="menu" class="span3">
+            <div class="well sidebar-nav padding5">
+                <ul class="nav nav-list">
+                    <li class="nav-header">Blog</li>
+                    <li><a href="{{ path('heliosblog_accueil') }}">Accueil du blog</a></li>
+                    {# On n'affiche le lien pour ajouter un article qu'aux utilisateurs disposant du rôle ROLE_AUTEUR #}
+                    {% if is_granted('ROLE_AUTEUR') %}
+                        <li><a href="{{ path('heliosblog_ajouter') }}">Ajouter un article</a></li>
+                    {% endif %}
+                </ul>
+            </div>
+
+          <!-- heliosCoreBundle::injectAdsense -->
+
+          {# On affiche les 3 derniers articles #}
+          {{ render(controller("HeliosBlogBundle:Blog:menu", {'nombre': 3})) }}
+
+          {# On affiche un coin espace membre en bas à gauche :
+             * Si le membre est identifié : lien de déconnexion
+             * Sinon : formulaire de connexion #}
+          {% if is_granted('IS_AUTHENTICATED_REMEMBERED') %}
+            <div class="well sidebar-nav padding5">
+                <ul class="nav nav-list">
+                  <li class="nav-header">Blog</li>
+                  <li>{{ 'layout.logged_in_as'|trans({'%username%': app.user.username}, 'FOSUserBundle') }}</li>
+                  <li><a href="{{ path('fos_user_security_logout') }}">{{ 'layout.logout'|trans({}, 'FOSUserBundle') }}</a></li>
+                </ul>
+            </div>
+          {# On affiche le formulaire de login, sauf sur la page de connexion #}
+          {% elseif app.request.attributes.get('_route') != 'fos_user_security_login' %}
+                {{ render(controller('HeliosUserBundle:Security:login')) }}
+          {% endif %}
+
+        </div>
+
+        {# Contenu central de la page #}
+        <div id="content" class="span9">
+          {% block body %}
+          {% endblock %}
+        </div>
+      </div>
+
+      <hr>
+
+      <footer>
+        <p>
+          Projet généré avec Symfony2. - <a href="{{ path('heliosblog_feed') }}">Flux RSS Blog</a>
+          -
+          <a href="https://twitter.com/helios_" class="twitter-follow-button" data-show-count="false" data-lang="fr" data-dnt="true">Suivre @helios_</a>
+        </p>
+      </footer>
+    </div>
+
+    {% block javascripts %}
+      {# jQuery depuis le CDN de Google, ou fallback sur une copie locale #}
+      <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+      <script>window.jQuery || document.write('<script src="{{ asset('js/jquery.min.js') }}"><\/script>')</script>
+
+      {# Tous nos javascripts avec Assetic #}
+      {% javascripts output='js/main.js' filter='?yui_js'
+        'js/bootstrap.js'
+        '@HeliosBlogBundle/Resources/public/js/*' %}
+        <script type="text/javascript" src="{{ asset_url }}"></script>
+      {% endjavascripts %}
+    {% endblock %}
+  </body>
+</html>

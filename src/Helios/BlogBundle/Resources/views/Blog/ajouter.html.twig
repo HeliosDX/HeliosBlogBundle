@@ -1,0 +1,19 @@
+{# src/Helios/BlogBundle/Resources/views/Blog/modifier.html.twig #}
+
+{% extends "HeliosBlogBundle::layout.html.twig" %}
+
+{% block title %}
+  Ajouter un article - {{ parent() }}
+{% endblock %}
+
+{% block heliosblog_body %}
+
+  <h2>Ajouter un article</h2>
+
+  {% include "HeliosBlogBundle:Blog:formulaire.html.twig" %}
+
+  <p>
+    Vous ajoutez un nouvel article.
+  </p>
+
+{% endblock %}

@@ -1,0 +1,10 @@
+{# src/Helios/BlogBundle/Resources/views/Blog/menu.html.twig #}
+
+<div class="well sidebar-nav padding5">
+    <ul class="nav nav-list">
+        <li class="nav-header">Derniers articles</li>
+        {% for article in liste_articles %}
+            <li><a href="{{ path('heliosblog_voir', {'slug': article.slug}) }}">{{ article.titre }}</a></li>
+        {% endfor %}
+    </ul>
+</div>

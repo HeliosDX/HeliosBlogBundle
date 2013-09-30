@@ -1,0 +1,36 @@
+heliosblog_ajouter:
+    pattern:   /ajouter
+    defaults:  { _controller: HeliosBlogBundle:Blog:ajouter }
+
+heliosblog_modifier:
+    pattern:   /modifier/{id}
+    defaults:  { _controller: HeliosBlogBundle:Blog:modifier }
+    requirements:
+        id:  \d+
+
+heliosblog_supprimer:
+    pattern:   /supprimer/{id}
+    defaults:  { _controller: HeliosBlogBundle:Blog:supprimer }
+    requirements:
+        id:  \d+
+
+heliosblog_feed:
+    pattern:   /feed.rss
+    defaults:  { _controller: HeliosBlogBundle:Blog:feed }
+
+heliosblog_voir:
+    pattern:   /{slug}
+    defaults:  { _controller: HeliosBlogBundle:Blog:voir }
+
+heliosblog_ajouter_commentaire:
+    pattern:  /ajouter/{id}/commentaire
+    defaults: { _controller: HeliosBlogBundle:Blog:ajouterCommentaire }
+    methods:  POST
+    requirements:
+        id:      \d+
+
+heliosblog_supprimer_commentaire:
+    pattern:   /supprimer/commentaire/{id}
+    defaults:  { _controller: HeliosBlogBundle:Blog:supprimerCommentaire }
+    requirements:
+        id:  \d+

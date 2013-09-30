@@ -1,0 +1,36 @@
+{# src/Helios/BlogBundle/Resources/views/Blog/index.html.twig #}
+
+{% extends "HeliosBlogBundle::layout.html.twig" %}
+
+{% block title %}
+  Accueil - {{ parent() }}
+{% endblock %}
+
+{% block heliosblog_body %}
+
+  <h2>Liste des articles</h2>
+
+  <ul>
+    {% for article in articles %}
+      {% include "HeliosBlogBundle:Blog:article.html.twig" with {'accueil': true} %}
+      <hr />
+    {% else %}
+      <p>Pas (encore !) d'articles</p>
+    {% endfor %}
+  </ul>
+
+  {# S'il y a plus d'une page, on affiche la liste des pages #}
+  {% if nb_page > 1 %}
+    <div class="pagination">
+        <ul>
+          {# On utilise la fonction range(a, b) qui crée un tableau de valeurs entre a et b #}
+          {% for p in range(1, nb_page) %}
+            <li{% if p == page %} class="active"{% endif %}>
+              <a href="{{ path('heliosblog_accueil', {'page': p}) }}">{{ p }}</a>
+            </li>
+          {% endfor %}
+        </ul>
+      </div>
+  {% endif %}
+
+{% endblock %}
